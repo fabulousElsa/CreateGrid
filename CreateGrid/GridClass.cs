@@ -8,8 +8,10 @@ namespace CreateGrid
 {
     public class GridClass
     {
-        public string location { get; set; }
+        public string Location { get; set; }
 
-        public string status { get; set; }
+        public string Status { get; set; }
+
+        public string ElementType { get; set; }
     }
 }
