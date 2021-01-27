@@ -13,5 +13,7 @@ namespace CreateGrid
         public string Status { get; set; }
 
         public string ElementType { get; set; }
+
+        public string BarrierType { get; set; }
     }
 }

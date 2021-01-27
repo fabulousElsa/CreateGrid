@@ -35,19 +35,16 @@
             this.LevelNameBox = new System.Windows.Forms.RichTextBox();
             this.ResetButton = new System.Windows.Forms.Button();
             this.CreateGridButton = new System.Windows.Forms.Button();
-            this.CreateElementButton = new System.Windows.Forms.Button();
             this.ElementPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.JsonPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.ChooseJson = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.SwitchToElement = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.BarrierButton = new System.Windows.Forms.Button();
+            this.BarrierCreatePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // ButtonPanel
@@ -104,21 +101,11 @@
             // 
             this.CreateGridButton.Location = new System.Drawing.Point(895, 61);
             this.CreateGridButton.Name = "CreateGridButton";
-            this.CreateGridButton.Size = new System.Drawing.Size(168, 46);
+            this.CreateGridButton.Size = new System.Drawing.Size(184, 46);
             this.CreateGridButton.TabIndex = 5;
-            this.CreateGridButton.Text = "地图生成面板";
+            this.CreateGridButton.Text = "1:地图生成面板";
             this.CreateGridButton.UseVisualStyleBackColor = true;
             this.CreateGridButton.Click += new System.EventHandler(this.CreateGridButton_Click);
-            // 
-            // CreateElementButton
-            // 
-            this.CreateElementButton.Location = new System.Drawing.Point(895, 255);
-            this.CreateElementButton.Name = "CreateElementButton";
-            this.CreateElementButton.Size = new System.Drawing.Size(168, 46);
-            this.CreateElementButton.TabIndex = 6;
-            this.CreateElementButton.Text = "元素生成面板";
-            this.CreateElementButton.UseVisualStyleBackColor = true;
-            this.CreateElementButton.Click += new System.EventHandler(this.CreateElementButton_Click);
             // 
             // ElementPanel
             // 
@@ -128,50 +115,22 @@
             this.ElementPanel.Size = new System.Drawing.Size(867, 820);
             this.ElementPanel.TabIndex = 7;
             // 
-            // JsonPath
-            // 
-            this.JsonPath.Location = new System.Drawing.Point(895, 210);
-            this.JsonPath.Name = "JsonPath";
-            this.JsonPath.ReadOnly = true;
-            this.JsonPath.Size = new System.Drawing.Size(257, 31);
-            this.JsonPath.TabIndex = 8;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(905, 195);
+            this.label2.Location = new System.Drawing.Point(905, 251);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 21);
             this.label2.TabIndex = 9;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ChooseJson
-            // 
-            this.ChooseJson.Location = new System.Drawing.Point(1165, 203);
-            this.ChooseJson.Name = "ChooseJson";
-            this.ChooseJson.Size = new System.Drawing.Size(111, 43);
-            this.ChooseJson.TabIndex = 10;
-            this.ChooseJson.Text = "选择Json";
-            this.ChooseJson.UseVisualStyleBackColor = true;
-            this.ChooseJson.Click += new System.EventHandler(this.ChooseJson_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(900, 174);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(264, 21);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "或者选择要载入的Json文件";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // SwitchToElement
             // 
-            this.SwitchToElement.Location = new System.Drawing.Point(1092, 61);
+            this.SwitchToElement.Location = new System.Drawing.Point(895, 122);
             this.SwitchToElement.Name = "SwitchToElement";
             this.SwitchToElement.Size = new System.Drawing.Size(184, 46);
             this.SwitchToElement.TabIndex = 12;
-            this.SwitchToElement.Text = "转换成元素模板";
+            this.SwitchToElement.Text = "2:元素生成模板";
             this.SwitchToElement.UseVisualStyleBackColor = true;
             this.SwitchToElement.Click += new System.EventHandler(this.SwitchToElement_Click);
             // 
@@ -185,20 +144,10 @@
             this.label4.Text = "在这里进行地图的设计";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(900, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(241, 21);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "可由上面转换成元素模板";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(900, 366);
+            this.label6.Location = new System.Drawing.Point(900, 392);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(200, 21);
             this.label6.TabIndex = 14;
@@ -208,7 +157,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(900, 407);
+            this.label7.Location = new System.Drawing.Point(900, 433);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(200, 21);
             this.label7.TabIndex = 15;
@@ -218,7 +167,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(900, 452);
+            this.label8.Location = new System.Drawing.Point(900, 478);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(210, 21);
             this.label8.TabIndex = 16;
@@ -228,12 +177,30 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(900, 493);
+            this.label9.Location = new System.Drawing.Point(900, 519);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(304, 21);
             this.label9.TabIndex = 17;
             this.label9.Text = "魔鸟是魔力鸟，其他是普通动物";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // BarrierButton
+            // 
+            this.BarrierButton.Location = new System.Drawing.Point(895, 183);
+            this.BarrierButton.Name = "BarrierButton";
+            this.BarrierButton.Size = new System.Drawing.Size(184, 46);
+            this.BarrierButton.TabIndex = 18;
+            this.BarrierButton.Text = "3:障碍生成面板";
+            this.BarrierButton.UseVisualStyleBackColor = true;
+            this.BarrierButton.Click += new System.EventHandler(this.BarrierButton_Click);
+            // 
+            // BarrierCreatePanel
+            // 
+            this.BarrierCreatePanel.Location = new System.Drawing.Point(12, 9);
+            this.BarrierCreatePanel.Name = "BarrierCreatePanel";
+            this.BarrierCreatePanel.Padding = new System.Windows.Forms.Padding(2);
+            this.BarrierCreatePanel.Size = new System.Drawing.Size(867, 820);
+            this.BarrierCreatePanel.TabIndex = 8;
             // 
             // CreateGrid
             // 
@@ -242,20 +209,17 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1314, 841);
+            this.Controls.Add(this.BarrierCreatePanel);
+            this.Controls.Add(this.BarrierButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.SwitchToElement);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.ChooseJson);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.JsonPath);
             this.Controls.Add(this.ButtonPanel);
             this.Controls.Add(this.ElementPanel);
-            this.Controls.Add(this.CreateElementButton);
             this.Controls.Add(this.CreateGridButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.label1);
@@ -279,19 +243,16 @@
         private System.Windows.Forms.RichTextBox LevelNameBox;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button CreateGridButton;
-        private System.Windows.Forms.Button CreateElementButton;
         private System.Windows.Forms.FlowLayoutPanel ElementPanel;
-        private System.Windows.Forms.TextBox JsonPath;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button ChooseJson;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SwitchToElement;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button BarrierButton;
+        private System.Windows.Forms.FlowLayoutPanel BarrierCreatePanel;
     }
 }
 
