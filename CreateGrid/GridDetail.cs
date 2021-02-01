@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreateGrid
 {
-    public class GridClass
+    public class GridDetail
     {
         public string Location { get; set; }
 

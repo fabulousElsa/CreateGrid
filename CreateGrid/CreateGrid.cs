@@ -11,7 +11,7 @@ namespace CreateGrid
     public partial class CreateGrid : Form
     {
         private int _tempNum = 0;
-        public JsonClassList cl = new JsonClassList();
+        public GridList cl = new GridList();
         
         public CreateGrid()
         {
@@ -40,7 +40,7 @@ namespace CreateGrid
 
         private void CreateGrid_Load(object sender, EventArgs e)
         {
-            cl.gridClasses = new List<GridClass>();
+            cl.gridDetails = new List<GridDetail>();
             ElementPanel.Visible = false;
             ButtonPanel.Visible = false;
             BarrierCreatePanel.Visible = false;
@@ -153,10 +153,10 @@ namespace CreateGrid
                 {
                     //强转
                     Button btn = (Button)control;
-                    GridClass gc = new GridClass();
+                    GridDetail gc = new GridDetail();
                     gc.Location = btn.Name;
                     gc.Status = btn.Text;
-                    cl.gridClasses.Add(gc);
+                    cl.gridDetails.Add(gc);
                 }
             }
         }
@@ -167,25 +167,25 @@ namespace CreateGrid
                 MessageBox.Show("请输入关卡名称!", "Warning");
                 return;
             }
-            if (cl.gridClasses != null)
+            if (cl.gridDetails != null)
             {
                 //再次生成Json
                 for (int i = 0; i < ElementPanel.Controls.Count; i++)
                 {
-                    if (cl.gridClasses[i].Status == "1")
+                    if (cl.gridDetails[i].Status == "1")
                     {
                         if (ElementPanel.Controls[i] is ComboBox)
                         {
                             ComboBox cbb = (ComboBox)ElementPanel.Controls[i];
                             if (cbb.SelectedItem != null)
                             {
-                                cl.gridClasses[i].ElementType = cbb.SelectedItem.ToString();
+                                cl.gridDetails[i].ElementType = cbb.SelectedItem.ToString();
                             }
 
                             ComboBox cbb2 = (ComboBox)BarrierCreatePanel.Controls[i];
                             if (cbb2.SelectedItem !=null)
                             {
-                            cl.gridClasses[i].BarrierType = cbb2.SelectedItem.ToString();
+                            cl.gridDetails[i].BarrierType = cbb2.SelectedItem.ToString();
                             }
                         }
                         else
@@ -257,9 +257,9 @@ namespace CreateGrid
 
         private void SwitchToElement_Click(object sender, EventArgs e)
         {
-            cl.gridClasses.Clear();
+            cl.gridDetails.Clear();
             FillJsonClass();
-            if (cl.gridClasses == null)
+            if (cl.gridDetails == null)
             {
                 MessageBox.Show("尚未设计地图!", "Warning");
                 return;
@@ -269,7 +269,7 @@ namespace CreateGrid
             {
                 for (int i = 0; i < ElementPanel.Controls.Count; i++)
                 {
-                    if (cl.gridClasses[i].Status == "0")
+                    if (cl.gridDetails[i].Status == "0")
                     {
                         if (ElementPanel.Controls[i] is ComboBox)
                         {
@@ -281,7 +281,7 @@ namespace CreateGrid
                             continue;
                         }
                     }
-                    else if (cl.gridClasses[i].Status == "1")
+                    else if (cl.gridDetails[i].Status == "1")
                     {
                         if (ElementPanel.Controls[i] is ComboBox)
                         {
@@ -301,9 +301,9 @@ namespace CreateGrid
 
         private void BarrierButton_Click(object sender, EventArgs e)
         {
-            cl.gridClasses.Clear();
+            cl.gridDetails.Clear();
             FillJsonClass();
-            if (cl.gridClasses == null)
+            if (cl.gridDetails == null)
             {
                 MessageBox.Show("尚未设计地图!", "Warning");
                 return;
@@ -316,7 +316,7 @@ namespace CreateGrid
             {
                 for (int i = 0; i < BarrierCreatePanel.Controls.Count; i++)
                 {
-                    if (cl.gridClasses[i].Status == "0")
+                    if (cl.gridDetails[i].Status == "0")
                     {
                         if (BarrierCreatePanel.Controls[i] is ComboBox)
                         {
@@ -328,7 +328,7 @@ namespace CreateGrid
                             continue;
                         }
                     }
-                    else if (cl.gridClasses[i].Status == "1")
+                    else if (cl.gridDetails[i].Status == "1")
                     {
                         if (BarrierCreatePanel.Controls[i] is ComboBox)
                         {

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CreateGrid
 {
-  public  class JsonClassList
+  public  class GridList
     {
-        public List<GridClass> gridClasses { get; set; }
+        public List<GridDetail> gridDetails { get; set; }
     }
 }
