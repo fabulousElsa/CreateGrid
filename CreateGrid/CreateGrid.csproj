@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonFactory.cs" />
     <Compile Include="CreateGrid.cs">
       <SubType>Form</SubType>
     </Compile>

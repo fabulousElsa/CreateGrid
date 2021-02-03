@@ -45,6 +45,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.BarrierButton = new System.Windows.Forms.Button();
             this.BarrierCreatePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonPanel
@@ -202,13 +203,27 @@
             this.BarrierCreatePanel.Size = new System.Drawing.Size(867, 820);
             this.BarrierCreatePanel.TabIndex = 8;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.Blue;
+            this.label3.Location = new System.Drawing.Point(906, 305);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(376, 26);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "拖入Json文件进窗口来进行操作";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CreateGrid
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1314, 841);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.BarrierCreatePanel);
             this.Controls.Add(this.BarrierButton);
             this.Controls.Add(this.label9);
@@ -226,10 +241,13 @@
             this.Controls.Add(this.LevelNameBox);
             this.Controls.Add(this.CreateJson);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "CreateGrid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateGrid";
             this.Load += new System.EventHandler(this.CreateGrid_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.CreateGrid_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.CreateGrid_DragEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,6 +271,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button BarrierButton;
         private System.Windows.Forms.FlowLayoutPanel BarrierCreatePanel;
+        private System.Windows.Forms.Label label3;
     }
 }
 

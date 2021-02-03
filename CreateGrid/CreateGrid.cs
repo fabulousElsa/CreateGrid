@@ -10,9 +10,9 @@ namespace CreateGrid
 {
     public partial class CreateGrid : Form
     {
-        private int _tempNum = 0;
         public GridList cl = new GridList();
-        
+        public static string dragJsonFilePath;
+
         public CreateGrid()
         {
             InitializeComponent();
@@ -27,7 +27,6 @@ namespace CreateGrid
                 {
                     btn.Text = "1";
                     btn.BackColor = Color.BurlyWood;
-                    //Console.WriteLine(btn.Name);
                 }
                 else if (btn.Text == "1")
                 {
@@ -40,6 +39,8 @@ namespace CreateGrid
 
         private void CreateGrid_Load(object sender, EventArgs e)
         {
+            int _tempNum = 0;
+            dragJsonFilePath = "";
             cl.gridDetails = new List<GridDetail>();
             ElementPanel.Visible = false;
             ButtonPanel.Visible = false;
@@ -58,9 +59,9 @@ namespace CreateGrid
                 ButtonPanel.Controls.Add(btn);
                 btn.Click += button1_Click;
                 btn.MouseEnter += button1_MouseEnter;
-
-
             }
+
+
 
             for (int i = 0; i < 81; i++)
             {
@@ -70,11 +71,6 @@ namespace CreateGrid
                 cb.Items.Add("薄冰");
                 cb.Items.Add("中冰");
                 cb.Items.Add("厚冰");
-                cb.Items.Add("豆荚");
-                cb.Items.Add("魔藤");
-                cb.Items.Add("灰球");
-                cb.Items.Add("传送");
-                cb.Items.Add("礼盒");
                 cb.Font = new System.Drawing.Font("宋体", 8.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
                 cb.FlatStyle = FlatStyle.Standard;
                 cb.DropDownHeight = 80;
@@ -116,6 +112,12 @@ namespace CreateGrid
                 cb.Items.Add("炸马");
 
                 cb.Items.Add("魔鸟");
+                cb.Items.Add("豆荚");
+                cb.Items.Add("雪块");
+                //cb.Items.Add("魔藤");
+                //cb.Items.Add("灰球");
+                //cb.Items.Add("传送");
+                //cb.Items.Add("礼盒");
 
                 cb.Font = new System.Drawing.Font("宋体", 8.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
                 cb.FlatStyle = FlatStyle.Standard;
@@ -125,24 +127,24 @@ namespace CreateGrid
             }
         }
 
-        
 
         private void button1_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
+            Console.WriteLine(btn.Name);
             if (btn.Text == "0")
             {
                 btn.Text = "1";
                 btn.BackColor = Color.BurlyWood;
-                //Console.WriteLine(btn.Name);
             }
             else if (btn.Text == "1")
             {
                 btn.Text = "0";
                 btn.BackColor = Color.AliceBlue;
             }
-            
+
         }
+
         private void FillJsonClass()
         {
             //遍历控件集合
@@ -183,9 +185,9 @@ namespace CreateGrid
                             }
 
                             ComboBox cbb2 = (ComboBox)BarrierCreatePanel.Controls[i];
-                            if (cbb2.SelectedItem !=null)
+                            if (cbb2.SelectedItem != null)
                             {
-                            cl.gridDetails[i].BarrierType = cbb2.SelectedItem.ToString();
+                                cl.gridDetails[i].BarrierType = cbb2.SelectedItem.ToString();
                             }
                         }
                         else
@@ -211,6 +213,7 @@ namespace CreateGrid
         private void ResetButton_Click(object sender, EventArgs e)
         {
             LevelNameBox.Text = "";
+            cl.gridDetails.Clear();
             foreach (Control control in ButtonPanel.Controls)
             {
                 //如果控件是按钮
@@ -276,10 +279,6 @@ namespace CreateGrid
                             ComboBox cbb = (ComboBox)ElementPanel.Controls[i];
                             cbb.Enabled = false;
                         }
-                        else
-                        {
-                            continue;
-                        }
                     }
                     else if (cl.gridDetails[i].Status == "1")
                     {
@@ -287,10 +286,6 @@ namespace CreateGrid
                         {
                             ComboBox cbb = (ComboBox)ElementPanel.Controls[i];
                             cbb.Enabled = true;
-                        }
-                        else
-                        {
-                            continue;
                         }
                     }
                 }
@@ -323,10 +318,6 @@ namespace CreateGrid
                             ComboBox cbb = (ComboBox)BarrierCreatePanel.Controls[i];
                             cbb.Enabled = false;
                         }
-                        else
-                        {
-                            continue;
-                        }
                     }
                     else if (cl.gridDetails[i].Status == "1")
                     {
@@ -335,14 +326,123 @@ namespace CreateGrid
                             ComboBox cbb = (ComboBox)BarrierCreatePanel.Controls[i];
                             cbb.Enabled = true;
                         }
-                        else
-                        {
-                            continue;
-                        }
                     }
                 }
             }
         }
 
+        private void CreateGrid_DragEnter(object sender, DragEventArgs e)
+        {
+            //只允许文件拖放
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void CreateGrid_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] rs = (string[])e.Data.GetData(DataFormats.FileDrop);
+                dragJsonFilePath = rs[0];
+                LevelNameBox.Text = Path.GetFileNameWithoutExtension(dragJsonFilePath);
+                this.Text = "CreateGrid" + " 文件: " + dragJsonFilePath;
+                FillAllPanel(rs[0]);
+            }
+        }
+
+        private void FillAllPanel(string jsonFilePath)
+        {
+            StringBuilder sb = new StringBuilder();
+            using (StreamReader sr = new StreamReader(jsonFilePath, false))
+            {
+                sb.Append(sr.ReadToEnd());
+            }
+            //反序列化
+            cl = JsonConvert.DeserializeObject<GridList>(sb.ToString());
+            //开始三个遍历，把数据放到面板里面
+            if (cl != null)
+            {
+                //读取按钮面板
+                for (int i = 0; i < ButtonPanel.Controls.Count; i++)
+                {
+                    if (cl.gridDetails[i].Status == "0")
+                    {
+                        if (ButtonPanel.Controls[i] is Button)
+                        {
+                            Button btn = (Button)ButtonPanel.Controls[i];
+                            btn.Text = "0";
+                            btn.BackColor = Color.AliceBlue;
+                        }
+                    }
+                    else if (cl.gridDetails[i].Status == "1")
+                    {
+                        if (ButtonPanel.Controls[i] is Button)
+                        {
+                            Button btn = (Button)ButtonPanel.Controls[i];
+                            btn.Text = "1";
+                            btn.BackColor = Color.BurlyWood;
+                        }
+                    }
+                }
+
+                //读取元素面板
+                for (int i = 0; i < ElementPanel.Controls.Count; i++)
+                {
+                    if (cl.gridDetails[i].ElementType != null)
+                    {
+                        if (ElementPanel.Controls[i] is ComboBox)
+                        {
+                            ComboBox cbb = (ComboBox)ElementPanel.Controls[i];
+                            cbb.SelectedItem = cl.gridDetails[i].ElementType;
+                            cbb.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        if (ElementPanel.Controls[i] is ComboBox)
+                        {
+                            ComboBox cbb = (ComboBox)ElementPanel.Controls[i];
+                            cbb.SelectedItem = null;
+                            cbb.Enabled = false;
+                        }
+                    }
+                }
+
+                //读取障碍物面板
+                for (int i = 0; i < BarrierCreatePanel.Controls.Count; i++)
+                {
+                    if (cl.gridDetails[i].BarrierType != null)
+                    {
+                        if (BarrierCreatePanel.Controls[i] is ComboBox)
+                        {
+                            ComboBox cbb = (ComboBox)BarrierCreatePanel.Controls[i];
+                            cbb.SelectedItem = cl.gridDetails[i].BarrierType;
+                            cbb.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        if (BarrierCreatePanel.Controls[i] is ComboBox)
+                        {
+                            ComboBox cbb = (ComboBox)BarrierCreatePanel.Controls[i];
+                            cbb.SelectedItem = null;
+                            cbb.Enabled = false;
+                        }
+
+                    }
+                }
+            }
+
+            //把按钮面板显示出来
+            ButtonPanel.Visible = true;
+            BarrierCreatePanel.Visible = false;
+            ElementPanel.Visible = false;
+        }
     }
 }
