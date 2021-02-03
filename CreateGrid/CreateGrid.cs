@@ -199,9 +199,14 @@ namespace CreateGrid
 
             }
             string convertedJson = JsonConvert.SerializeObject(cl);
-            string relativePath = System.Windows.Forms.Application.StartupPath + "\\" + LevelNameBox.Text + ".json";
-            //string jsonFileName = LevelNameBox.Text + ".json";
-            using (StreamWriter sw = new StreamWriter(relativePath, false))
+
+            string relativePath = Application.StartupPath + "\\" + "JsonFile" + "\\";
+            if (!Directory.Exists(relativePath))
+            {
+                Directory.CreateDirectory(relativePath);
+            }
+            string jsonPath = relativePath + LevelNameBox.Text + ".json";
+            using (StreamWriter sw = new StreamWriter(jsonPath, false))
             {
                 sw.Write(convertedJson);
             }
