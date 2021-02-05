@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CreateGrid
 {
-  public  class GridList
+    public class GridList
     {
         public List<GridDetail> gridDetails { get; set; }
+
+        public List<MissionDetail> MissionDetails { get; set; }
     }
 }

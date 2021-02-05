@@ -59,6 +59,7 @@ namespace CreateGrid
             int _tempNum = 0;
             dragJsonFilePath = "";
             cl.gridDetails = new List<GridDetail>();
+            cl.MissionDetails = new List<MissionDetail>();
             ElementPanel.Visible = false;
             ButtonPanel.Visible = false;
             BarrierCreatePanel.Visible = false;
@@ -140,7 +141,12 @@ namespace CreateGrid
                 ElementPanel.Controls.Add(cb);
             }
         }
-
+        
+        /// <summary>
+        /// 地图生成面板中的按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -181,6 +187,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 生成Json按钮按下以后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateJson_Click(object sender, EventArgs e)
         {
 
@@ -189,6 +200,42 @@ namespace CreateGrid
                 MessageBox.Show("请输入关卡名称!", "Warning");
                 return;
             }
+
+            if (cl.MissionDetails != null)
+            {
+                cl.MissionDetails.Clear();
+            }
+            else
+            {
+                cl.MissionDetails = new List<MissionDetail>();
+            }
+
+            if (LevelStepNum.Text != "" && LevelGoalNumber.Text != "" && PassNum1.Text != "")
+            {
+                MissionDetail md = new MissionDetail();
+                md.StepLimit = LevelStepNum.Text;
+                md.GoalNumber = LevelGoalNumber.Text;
+                if (PassGoalType1.SelectedItem != null)
+                {
+                    md.GoalTypeOne = PassGoalType1.SelectedItem.ToString();
+                }
+                if (PassGoalType2.SelectedItem != null)
+                {
+                    md.GoalTypeTwo = PassGoalType2.SelectedText;
+                }
+                md.GoalTypeOneNum = PassNum1.Text;
+                if (PassNum2.Text != "")
+                {
+                    md.GoalTypeTwoNum = PassNum2.Text;
+                }
+                cl.MissionDetails.Add(md);
+            }
+            else
+            {
+                MessageBox.Show("关卡任务数据未填写完全!", "Warning");
+                return;
+            }
+
             if (cl.gridDetails != null)
             {
                 //再次生成Json
@@ -243,6 +290,9 @@ namespace CreateGrid
             ResetData();
         }
 
+        /// <summary>
+        /// 重置数据
+        /// </summary>
         private void ResetData()
         {
             LevelNameBox.Text = "";
@@ -251,6 +301,14 @@ namespace CreateGrid
             JsonList.SelectedIndex = -1;
             SearchJsonName.Text = "";
             cl.gridDetails.Clear();
+            cl.MissionDetails.Clear();
+            LevelStepNum.Text = "";
+            LevelGoalNumber.Text = "";
+            PassGoalType1.SelectedIndex = -1;
+            PassGoalType2.SelectedIndex = -1;
+            PassNum1.Text = "";
+            PassNum2.Text = "";
+
             foreach (Control control in ButtonPanel.Controls)
             {
                 //如果控件是按钮
@@ -284,6 +342,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 地图生成面板按钮按下以后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateGridButton_Click(object sender, EventArgs e)
         {
             ButtonPanel.Visible = true;
@@ -291,6 +354,11 @@ namespace CreateGrid
             ElementPanel.Visible = false;
         }
 
+        /// <summary>
+        /// 元素面板按钮按下以后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SwitchToElement_Click(object sender, EventArgs e)
         {
             cl.gridDetails.Clear();
@@ -328,6 +396,11 @@ namespace CreateGrid
             ElementPanel.Visible = true;
         }
 
+        /// <summary>
+        /// 障碍物面板按钮按下以后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BarrierButton_Click(object sender, EventArgs e)
         {
             cl.gridDetails.Clear();
@@ -366,6 +439,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 拖入文件以后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateGrid_DragEnter(object sender, DragEventArgs e)
         {
             //只允许文件拖放
@@ -379,6 +457,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 拖拽文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateGrid_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -391,6 +474,10 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 加载数据到程序中
+        /// </summary>
+        /// <param name="jsonFilePath"></param>
         private void FillAllPanel(string jsonFilePath)
         {
             StringBuilder sb = new StringBuilder();
@@ -488,8 +575,26 @@ namespace CreateGrid
             ButtonPanel.Visible = true;
             BarrierCreatePanel.Visible = false;
             ElementPanel.Visible = false;
+
+            if (cl.MissionDetails != null)
+            {
+                LevelStepNum.Text = cl.MissionDetails[0].StepLimit;
+                LevelGoalNumber.Text = cl.MissionDetails[0].GoalNumber;
+                PassGoalType1.SelectedText = cl.MissionDetails[0].GoalTypeOne;
+                PassGoalType2.SelectedText = cl.MissionDetails[0].GoalTypeTwo;
+                PassNum1.Text = cl.MissionDetails[0].GoalTypeOneNum;
+                PassNum2.Text = cl.MissionDetails[0].GoalTypeTwoNum;
+            }
+            else
+            {
+                cl.MissionDetails = new List<MissionDetail>();
+            }
+
         }
 
+        /// <summary>
+        /// 更新列表文件
+        /// </summary>
         private void UpdateListbox()
         {
             JsonList.Items.Clear();
@@ -500,6 +605,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 双击列表中的文件打开文件。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void JsonList_DoubleClick(object sender, EventArgs e)
         {
             cl = null;
@@ -512,6 +622,11 @@ namespace CreateGrid
             }
         }
 
+        /// <summary>
+        /// 按文件名搜索
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchJsonButton_Click(object sender, EventArgs e)
         {
             List<string> searchList = new List<string>();
@@ -546,10 +661,10 @@ namespace CreateGrid
             }
         }
 
+        
         private void SearchJsonName_MouseClick(object sender, MouseEventArgs e)
         {
             SearchJsonName.Text = "";
         }
-
     }
 }

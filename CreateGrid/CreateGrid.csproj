@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="GridDetail.cs" />
     <Compile Include="GridList.cs" />
+    <Compile Include="MissionDetail.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CreateGrid.resx">

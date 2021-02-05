@@ -44,6 +44,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SearchJsonName = new System.Windows.Forms.RichTextBox();
             this.SearchJsonButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.PassGoalType1 = new System.Windows.Forms.ComboBox();
+            this.LevelGoalNumber = new System.Windows.Forms.TextBox();
+            this.LevelStepNum = new System.Windows.Forms.TextBox();
+            this.PassGoalType2 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.PassNum1 = new System.Windows.Forms.TextBox();
+            this.PassNum2 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonPanel
@@ -201,6 +214,157 @@
             this.SearchJsonButton.UseVisualStyleBackColor = true;
             this.SearchJsonButton.Click += new System.EventHandler(this.SearchJsonButton_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Info;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label4.Location = new System.Drawing.Point(1170, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 21);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "关卡步数";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Info;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label5.Location = new System.Drawing.Point(1170, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 21);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "通关目标个数";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Info;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label6.Location = new System.Drawing.Point(1170, 218);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 21);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "通关目标1";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.Info;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label7.Location = new System.Drawing.Point(1172, 391);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 21);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "通关目标2";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PassGoalType1
+            // 
+            this.PassGoalType1.FormattingEnabled = true;
+            this.PassGoalType1.Items.AddRange(new object[] {
+            "小熊",
+            "猫猫",
+            "小鸡",
+            "狐狸",
+            "青蛙",
+            "河马",
+            "灰球",
+            "薄冰",
+            "雪块1",
+            "豆荚"});
+            this.PassGoalType1.Location = new System.Drawing.Point(1174, 253);
+            this.PassGoalType1.Name = "PassGoalType1";
+            this.PassGoalType1.Size = new System.Drawing.Size(134, 29);
+            this.PassGoalType1.TabIndex = 34;
+            // 
+            // LevelGoalNumber
+            // 
+            this.LevelGoalNumber.Location = new System.Drawing.Point(1174, 169);
+            this.LevelGoalNumber.Name = "LevelGoalNumber";
+            this.LevelGoalNumber.Size = new System.Drawing.Size(134, 31);
+            this.LevelGoalNumber.TabIndex = 35;
+            // 
+            // LevelStepNum
+            // 
+            this.LevelStepNum.Location = new System.Drawing.Point(1174, 92);
+            this.LevelStepNum.Name = "LevelStepNum";
+            this.LevelStepNum.Size = new System.Drawing.Size(134, 31);
+            this.LevelStepNum.TabIndex = 36;
+            // 
+            // PassGoalType2
+            // 
+            this.PassGoalType2.FormattingEnabled = true;
+            this.PassGoalType2.Items.AddRange(new object[] {
+            "小熊",
+            "猫猫",
+            "小鸡",
+            "狐狸",
+            "青蛙",
+            "河马",
+            "灰球",
+            "薄冰",
+            "雪块1",
+            "豆荚"});
+            this.PassGoalType2.Location = new System.Drawing.Point(1176, 426);
+            this.PassGoalType2.Name = "PassGoalType2";
+            this.PassGoalType2.Size = new System.Drawing.Size(134, 29);
+            this.PassGoalType2.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.SystemColors.Info;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label8.Location = new System.Drawing.Point(1170, 301);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(147, 21);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "通关目标1个数";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.SystemColors.Info;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label9.Location = new System.Drawing.Point(1172, 474);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 21);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "通关目标2个数";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PassNum1
+            // 
+            this.PassNum1.Location = new System.Drawing.Point(1174, 337);
+            this.PassNum1.Name = "PassNum1";
+            this.PassNum1.Size = new System.Drawing.Size(134, 31);
+            this.PassNum1.TabIndex = 40;
+            // 
+            // PassNum2
+            // 
+            this.PassNum2.Location = new System.Drawing.Point(1176, 510);
+            this.PassNum2.Name = "PassNum2";
+            this.PassNum2.Size = new System.Drawing.Size(134, 31);
+            this.PassNum2.TabIndex = 41;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.SystemColors.Info;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label10.ForeColor = System.Drawing.Color.Blue;
+            this.label10.Location = new System.Drawing.Point(1172, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(136, 21);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "关卡任务设置";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CreateGrid
             // 
             this.AllowDrop = true;
@@ -208,15 +372,28 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1190, 841);
+            this.ClientSize = new System.Drawing.Size(1334, 841);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.PassNum2);
+            this.Controls.Add(this.PassNum1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.ButtonPanel);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.BarrierCreatePanel);
+            this.Controls.Add(this.PassGoalType2);
             this.Controls.Add(this.SearchJsonButton);
+            this.Controls.Add(this.LevelStepNum);
             this.Controls.Add(this.SearchJsonName);
+            this.Controls.Add(this.LevelGoalNumber);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.PassGoalType1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.JsonList);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.BarrierButton);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.SwitchToElement);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ElementPanel);
@@ -254,6 +431,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox SearchJsonName;
         private System.Windows.Forms.Button SearchJsonButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox LevelStepNum;
+        private System.Windows.Forms.TextBox LevelGoalNumber;
+        private System.Windows.Forms.ComboBox PassGoalType1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox PassGoalType2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox PassNum1;
+        private System.Windows.Forms.TextBox PassNum2;
+        private System.Windows.Forms.Label label10;
     }
 }
 
