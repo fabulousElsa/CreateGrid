@@ -8,12 +8,12 @@ namespace CreateGrid
 {
     public class MissionDetail
     {
-        public string StepLimit;
-        public string GoalNumber;
-        public string GoalTypeOne;
-        public string GoalTypeOneNum;
-        public string GoalTypeTwo;
-        public string GoalTypeTwoNum;
-        
+        public string StepLimit { get; set; }
+        public string GoalNumber { get; set; }
+        public string GoalTypeOne { get; set; }
+        public string GoalTypeOneNum { get; set; }
+        public string GoalTypeTwo { get; set; }
+        public string GoalTypeTwoNum { get; set; }
+
     }
 }

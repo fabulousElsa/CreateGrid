@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateGrid));
             this.ButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.CreateJson = new System.Windows.Forms.Button();
@@ -57,6 +58,11 @@
             this.PassNum1 = new System.Windows.Forms.TextBox();
             this.PassNum2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.JsonListMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开文件所在位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.JsonListMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonPanel
@@ -169,6 +175,7 @@
             // JsonList
             // 
             this.JsonList.BackColor = System.Drawing.SystemColors.Menu;
+            this.JsonList.ContextMenuStrip = this.JsonListMenu;
             this.JsonList.Font = new System.Drawing.Font("宋体", 10.71429F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.JsonList.FormattingEnabled = true;
             this.JsonList.ItemHeight = 25;
@@ -365,6 +372,37 @@
             this.label10.Text = "关卡任务设置";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // JsonListMenu
+            // 
+            this.JsonListMenu.ImageScalingSize = new System.Drawing.Size(28, 28);
+            this.JsonListMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开ToolStripMenuItem,
+            this.删除ToolStripMenuItem,
+            this.打开文件所在位置ToolStripMenuItem});
+            this.JsonListMenu.Name = "JsonListMenu";
+            this.JsonListMenu.Size = new System.Drawing.Size(271, 144);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // 打开ToolStripMenuItem
+            // 
+            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.打开ToolStripMenuItem.Text = "打开";
+            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
+            // 
+            // 打开文件所在位置ToolStripMenuItem
+            // 
+            this.打开文件所在位置ToolStripMenuItem.Name = "打开文件所在位置ToolStripMenuItem";
+            this.打开文件所在位置ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.打开文件所在位置ToolStripMenuItem.Text = "打开文件所在位置";
+            this.打开文件所在位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件所在位置ToolStripMenuItem_Click);
+            // 
             // CreateGrid
             // 
             this.AllowDrop = true;
@@ -409,6 +447,7 @@
             this.Load += new System.EventHandler(this.CreateGrid_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.CreateGrid_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.CreateGrid_DragEnter);
+            this.JsonListMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,6 +483,10 @@
         private System.Windows.Forms.TextBox PassNum1;
         private System.Windows.Forms.TextBox PassNum2;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ContextMenuStrip JsonListMenu;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开文件所在位置ToolStripMenuItem;
     }
 }
 

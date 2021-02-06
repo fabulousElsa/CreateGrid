@@ -141,7 +141,7 @@ namespace CreateGrid
                 ElementPanel.Controls.Add(cb);
             }
         }
-        
+
         /// <summary>
         /// 地图生成面板中的按钮
         /// </summary>
@@ -221,7 +221,7 @@ namespace CreateGrid
                 }
                 if (PassGoalType2.SelectedItem != null)
                 {
-                    md.GoalTypeTwo = PassGoalType2.SelectedText;
+                    md.GoalTypeTwo = PassGoalType2.SelectedItem.ToString();
                 }
                 md.GoalTypeOneNum = PassNum1.Text;
                 if (PassNum2.Text != "")
@@ -288,6 +288,8 @@ namespace CreateGrid
         private void ResetButton_Click(object sender, EventArgs e)
         {
             ResetData();
+            UpdateListbox();
+            JsonList.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -297,15 +299,23 @@ namespace CreateGrid
         {
             LevelNameBox.Text = "";
             this.Text = "CreateGrid";
-            UpdateListbox();
-            JsonList.SelectedIndex = -1;
+            //UpdateListbox();
+            //JsonList.SelectedIndex = -1;
             SearchJsonName.Text = "";
-            cl.gridDetails.Clear();
-            cl.MissionDetails.Clear();
+
+            if (cl != null && cl.gridDetails != null)
+            {
+                cl.gridDetails.Clear();
+            }
+            if (cl != null && cl.MissionDetails != null)
+            {
+                cl.MissionDetails.Clear();
+            }
+
             LevelStepNum.Text = "";
             LevelGoalNumber.Text = "";
-            PassGoalType1.SelectedIndex = -1;
-            PassGoalType2.SelectedIndex = -1;
+            PassGoalType1.SelectedItem = null;
+            PassGoalType2.SelectedItem = null;
             PassNum1.Text = "";
             PassNum2.Text = "";
 
@@ -480,6 +490,8 @@ namespace CreateGrid
         /// <param name="jsonFilePath"></param>
         private void FillAllPanel(string jsonFilePath)
         {
+            ResetData();
+
             StringBuilder sb = new StringBuilder();
             cl = null;
             using (StreamReader sr = new StreamReader(jsonFilePath, false))
@@ -580,16 +592,17 @@ namespace CreateGrid
             {
                 LevelStepNum.Text = cl.MissionDetails[0].StepLimit;
                 LevelGoalNumber.Text = cl.MissionDetails[0].GoalNumber;
-                PassGoalType1.SelectedText = cl.MissionDetails[0].GoalTypeOne;
-                PassGoalType2.SelectedText = cl.MissionDetails[0].GoalTypeTwo;
+                PassGoalType1.SelectedItem = cl.MissionDetails[0].GoalTypeOne;
+                PassGoalType2.SelectedItem = cl.MissionDetails[0].GoalTypeTwo;
                 PassNum1.Text = cl.MissionDetails[0].GoalTypeOneNum;
                 PassNum2.Text = cl.MissionDetails[0].GoalTypeTwoNum;
             }
             else
             {
                 cl.MissionDetails = new List<MissionDetail>();
-            }
 
+            }
+            PassGoalType1.SelectedText.ToString();
         }
 
         /// <summary>
@@ -661,10 +674,37 @@ namespace CreateGrid
             }
         }
 
-        
+
         private void SearchJsonName_MouseClick(object sender, MouseEventArgs e)
         {
             SearchJsonName.Text = "";
         }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (JsonList.SelectedItem != null)
+            {
+                File.Delete(jsonFolderPath + "\\" + JsonList.SelectedItem);
+                UpdateListbox();
+            }
+        }
+
+        private void 打开ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (JsonList.SelectedItem != null)
+            {
+                System.Diagnostics.Process.Start("notepad.exe", jsonFolderPath + "\\" + JsonList.SelectedItem);
+            }
+        }
+
+        private void 打开文件所在位置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (JsonList.SelectedItem != null)
+            {
+                System.Diagnostics.Process.Start("Explorer",
+                    "/select," + jsonFolderPath + "\\" + JsonList.SelectedItem);
+            }
+        }
+
     }
 }
