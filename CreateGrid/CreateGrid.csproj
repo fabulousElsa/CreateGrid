@@ -77,6 +77,7 @@
     <Compile Include="CreateGrid.Designer.cs">
       <DependentUpon>CreateGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="DuranceDetail.cs" />
     <Compile Include="GridDetail.cs" />
     <Compile Include="GridList.cs" />
     <Compile Include="MissionDetail.cs" />

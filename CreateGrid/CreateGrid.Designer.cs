@@ -42,6 +42,10 @@
             this.BarrierCreatePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.JsonList = new System.Windows.Forms.ListBox();
+            this.JsonListMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开文件所在位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.SearchJsonName = new System.Windows.Forms.RichTextBox();
             this.SearchJsonButton = new System.Windows.Forms.Button();
@@ -58,10 +62,15 @@
             this.PassNum1 = new System.Windows.Forms.TextBox();
             this.PassNum2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.JsonListMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开文件所在位置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DuranceCreate = new System.Windows.Forms.Button();
+            this.FallingPlan = new System.Windows.Forms.Button();
+            this.DurancePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.HideBaseType = new System.Windows.Forms.RichTextBox();
+            this.AstrictPanel = new System.Windows.Forms.Button();
+            this.AstrictFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.PreFallRowNum = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.JsonListMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,14 +99,14 @@
             this.LevelNameBox.Location = new System.Drawing.Point(895, 721);
             this.LevelNameBox.Name = "LevelNameBox";
             this.LevelNameBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.LevelNameBox.Size = new System.Drawing.Size(254, 42);
+            this.LevelNameBox.Size = new System.Drawing.Size(274, 42);
             this.LevelNameBox.TabIndex = 4;
             this.LevelNameBox.Text = "";
             // 
             // ResetButton
             // 
             this.ResetButton.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ResetButton.Location = new System.Drawing.Point(1033, 769);
+            this.ResetButton.Location = new System.Drawing.Point(1053, 769);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(116, 45);
             this.ResetButton.TabIndex = 2;
@@ -109,9 +118,9 @@
             // 
             this.CreateGridButton.Location = new System.Drawing.Point(895, 9);
             this.CreateGridButton.Name = "CreateGridButton";
-            this.CreateGridButton.Size = new System.Drawing.Size(254, 46);
+            this.CreateGridButton.Size = new System.Drawing.Size(134, 46);
             this.CreateGridButton.TabIndex = 5;
-            this.CreateGridButton.Text = "1:地图生成面板";
+            this.CreateGridButton.Text = "1:地图生成";
             this.CreateGridButton.UseVisualStyleBackColor = true;
             this.CreateGridButton.Click += new System.EventHandler(this.CreateGridButton_Click);
             // 
@@ -134,21 +143,21 @@
             // 
             // SwitchToElement
             // 
-            this.SwitchToElement.Location = new System.Drawing.Point(895, 70);
+            this.SwitchToElement.Location = new System.Drawing.Point(1035, 9);
             this.SwitchToElement.Name = "SwitchToElement";
-            this.SwitchToElement.Size = new System.Drawing.Size(254, 46);
+            this.SwitchToElement.Size = new System.Drawing.Size(134, 46);
             this.SwitchToElement.TabIndex = 12;
-            this.SwitchToElement.Text = "2:元素生成模板";
+            this.SwitchToElement.Text = "2:元素生成";
             this.SwitchToElement.UseVisualStyleBackColor = true;
             this.SwitchToElement.Click += new System.EventHandler(this.SwitchToElement_Click);
             // 
             // BarrierButton
             // 
-            this.BarrierButton.Location = new System.Drawing.Point(895, 131);
+            this.BarrierButton.Location = new System.Drawing.Point(895, 61);
             this.BarrierButton.Name = "BarrierButton";
-            this.BarrierButton.Size = new System.Drawing.Size(254, 46);
+            this.BarrierButton.Size = new System.Drawing.Size(134, 46);
             this.BarrierButton.TabIndex = 18;
-            this.BarrierButton.Text = "3:障碍生成面板";
+            this.BarrierButton.Text = "3:障碍生成";
             this.BarrierButton.UseVisualStyleBackColor = true;
             this.BarrierButton.Click += new System.EventHandler(this.BarrierButton_Click);
             // 
@@ -181,10 +190,41 @@
             this.JsonList.ItemHeight = 25;
             this.JsonList.Location = new System.Drawing.Point(895, 385);
             this.JsonList.Name = "JsonList";
-            this.JsonList.Size = new System.Drawing.Size(254, 279);
+            this.JsonList.Size = new System.Drawing.Size(274, 279);
             this.JsonList.Sorted = true;
             this.JsonList.TabIndex = 21;
             this.JsonList.DoubleClick += new System.EventHandler(this.JsonList_DoubleClick);
+            // 
+            // JsonListMenu
+            // 
+            this.JsonListMenu.ImageScalingSize = new System.Drawing.Size(28, 28);
+            this.JsonListMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开ToolStripMenuItem,
+            this.删除ToolStripMenuItem,
+            this.打开文件所在位置ToolStripMenuItem});
+            this.JsonListMenu.Name = "JsonListMenu";
+            this.JsonListMenu.Size = new System.Drawing.Size(253, 106);
+            // 
+            // 打开ToolStripMenuItem
+            // 
+            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
+            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(252, 34);
+            this.打开ToolStripMenuItem.Text = "打开";
+            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(252, 34);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // 打开文件所在位置ToolStripMenuItem
+            // 
+            this.打开文件所在位置ToolStripMenuItem.Name = "打开文件所在位置ToolStripMenuItem";
+            this.打开文件所在位置ToolStripMenuItem.Size = new System.Drawing.Size(252, 34);
+            this.打开文件所在位置ToolStripMenuItem.Text = "打开文件所在位置";
+            this.打开文件所在位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件所在位置ToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -206,14 +246,14 @@
             this.SearchJsonName.Location = new System.Drawing.Point(895, 337);
             this.SearchJsonName.Name = "SearchJsonName";
             this.SearchJsonName.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.SearchJsonName.Size = new System.Drawing.Size(161, 42);
+            this.SearchJsonName.Size = new System.Drawing.Size(181, 42);
             this.SearchJsonName.TabIndex = 25;
             this.SearchJsonName.Text = "";
             this.SearchJsonName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SearchJsonName_MouseClick);
             // 
             // SearchJsonButton
             // 
-            this.SearchJsonButton.Location = new System.Drawing.Point(1062, 337);
+            this.SearchJsonButton.Location = new System.Drawing.Point(1082, 337);
             this.SearchJsonButton.Name = "SearchJsonButton";
             this.SearchJsonButton.Size = new System.Drawing.Size(87, 42);
             this.SearchJsonButton.TabIndex = 26;
@@ -226,7 +266,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.Info;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(1170, 60);
+            this.label4.Location = new System.Drawing.Point(1191, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 21);
             this.label4.TabIndex = 29;
@@ -238,7 +278,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.Info;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(1170, 135);
+            this.label5.Location = new System.Drawing.Point(1191, 135);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 21);
             this.label5.TabIndex = 30;
@@ -250,7 +290,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Info;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(1170, 218);
+            this.label6.Location = new System.Drawing.Point(1191, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 21);
             this.label6.TabIndex = 32;
@@ -262,7 +302,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Info;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(1172, 391);
+            this.label7.Location = new System.Drawing.Point(1193, 391);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 21);
             this.label7.TabIndex = 33;
@@ -283,21 +323,21 @@
             "薄冰",
             "雪块1",
             "豆荚"});
-            this.PassGoalType1.Location = new System.Drawing.Point(1174, 253);
+            this.PassGoalType1.Location = new System.Drawing.Point(1195, 253);
             this.PassGoalType1.Name = "PassGoalType1";
             this.PassGoalType1.Size = new System.Drawing.Size(134, 29);
             this.PassGoalType1.TabIndex = 34;
             // 
             // LevelGoalNumber
             // 
-            this.LevelGoalNumber.Location = new System.Drawing.Point(1174, 169);
+            this.LevelGoalNumber.Location = new System.Drawing.Point(1195, 169);
             this.LevelGoalNumber.Name = "LevelGoalNumber";
             this.LevelGoalNumber.Size = new System.Drawing.Size(134, 31);
             this.LevelGoalNumber.TabIndex = 35;
             // 
             // LevelStepNum
             // 
-            this.LevelStepNum.Location = new System.Drawing.Point(1174, 92);
+            this.LevelStepNum.Location = new System.Drawing.Point(1195, 92);
             this.LevelStepNum.Name = "LevelStepNum";
             this.LevelStepNum.Size = new System.Drawing.Size(134, 31);
             this.LevelStepNum.TabIndex = 36;
@@ -316,7 +356,7 @@
             "薄冰",
             "雪块1",
             "豆荚"});
-            this.PassGoalType2.Location = new System.Drawing.Point(1176, 426);
+            this.PassGoalType2.Location = new System.Drawing.Point(1197, 426);
             this.PassGoalType2.Name = "PassGoalType2";
             this.PassGoalType2.Size = new System.Drawing.Size(134, 29);
             this.PassGoalType2.TabIndex = 37;
@@ -326,7 +366,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Info;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label8.Location = new System.Drawing.Point(1170, 301);
+            this.label8.Location = new System.Drawing.Point(1191, 301);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(147, 21);
             this.label8.TabIndex = 38;
@@ -338,7 +378,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.Info;
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label9.Location = new System.Drawing.Point(1172, 474);
+            this.label9.Location = new System.Drawing.Point(1193, 474);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(147, 21);
             this.label9.TabIndex = 39;
@@ -347,14 +387,14 @@
             // 
             // PassNum1
             // 
-            this.PassNum1.Location = new System.Drawing.Point(1174, 337);
+            this.PassNum1.Location = new System.Drawing.Point(1195, 337);
             this.PassNum1.Name = "PassNum1";
             this.PassNum1.Size = new System.Drawing.Size(134, 31);
             this.PassNum1.TabIndex = 40;
             // 
             // PassNum2
             // 
-            this.PassNum2.Location = new System.Drawing.Point(1176, 510);
+            this.PassNum2.Location = new System.Drawing.Point(1197, 510);
             this.PassNum2.Name = "PassNum2";
             this.PassNum2.Size = new System.Drawing.Size(134, 31);
             this.PassNum2.TabIndex = 41;
@@ -365,43 +405,101 @@
             this.label10.BackColor = System.Drawing.SystemColors.Info;
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label10.ForeColor = System.Drawing.Color.Blue;
-            this.label10.Location = new System.Drawing.Point(1172, 22);
+            this.label10.Location = new System.Drawing.Point(1193, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(136, 21);
+            this.label10.Size = new System.Drawing.Size(94, 21);
             this.label10.TabIndex = 43;
-            this.label10.Text = "关卡任务设置";
+            this.label10.Text = "关卡设置";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // JsonListMenu
+            // DuranceCreate
             // 
-            this.JsonListMenu.ImageScalingSize = new System.Drawing.Size(28, 28);
-            this.JsonListMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开ToolStripMenuItem,
-            this.删除ToolStripMenuItem,
-            this.打开文件所在位置ToolStripMenuItem});
-            this.JsonListMenu.Name = "JsonListMenu";
-            this.JsonListMenu.Size = new System.Drawing.Size(271, 144);
+            this.DuranceCreate.Location = new System.Drawing.Point(1035, 61);
+            this.DuranceCreate.Name = "DuranceCreate";
+            this.DuranceCreate.Size = new System.Drawing.Size(134, 46);
+            this.DuranceCreate.TabIndex = 44;
+            this.DuranceCreate.Text = "4:禁锢生成";
+            this.DuranceCreate.UseVisualStyleBackColor = true;
+            this.DuranceCreate.Click += new System.EventHandler(this.DuranceCreate_Click);
             // 
-            // 删除ToolStripMenuItem
+            // FallingPlan
             // 
-            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.删除ToolStripMenuItem.Text = "删除";
-            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            this.FallingPlan.Location = new System.Drawing.Point(1195, 768);
+            this.FallingPlan.Name = "FallingPlan";
+            this.FallingPlan.Size = new System.Drawing.Size(134, 46);
+            this.FallingPlan.TabIndex = 45;
+            this.FallingPlan.Text = "计划下落";
+            this.FallingPlan.UseVisualStyleBackColor = true;
+            this.FallingPlan.Click += new System.EventHandler(this.FallingPlan_Click);
             // 
-            // 打开ToolStripMenuItem
+            // DurancePanel
             // 
-            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
-            this.打开ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.打开ToolStripMenuItem.Text = "打开";
-            this.打开ToolStripMenuItem.Click += new System.EventHandler(this.打开ToolStripMenuItem_Click);
+            this.DurancePanel.Location = new System.Drawing.Point(9, 12);
+            this.DurancePanel.Name = "DurancePanel";
+            this.DurancePanel.Padding = new System.Windows.Forms.Padding(2);
+            this.DurancePanel.Size = new System.Drawing.Size(867, 820);
+            this.DurancePanel.TabIndex = 46;
             // 
-            // 打开文件所在位置ToolStripMenuItem
+            // label11
             // 
-            this.打开文件所在位置ToolStripMenuItem.Name = "打开文件所在位置ToolStripMenuItem";
-            this.打开文件所在位置ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.打开文件所在位置ToolStripMenuItem.Text = "打开文件所在位置";
-            this.打开文件所在位置ToolStripMenuItem.Click += new System.EventHandler(this.打开文件所在位置ToolStripMenuItem_Click);
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.SystemColors.Info;
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label11.Location = new System.Drawing.Point(1193, 559);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(136, 21);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "基础类型隐藏";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // HideBaseType
+            // 
+            this.HideBaseType.BackColor = System.Drawing.SystemColors.Window;
+            this.HideBaseType.CausesValidation = false;
+            this.HideBaseType.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.HideBaseType.Location = new System.Drawing.Point(1197, 592);
+            this.HideBaseType.Name = "HideBaseType";
+            this.HideBaseType.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.HideBaseType.Size = new System.Drawing.Size(134, 72);
+            this.HideBaseType.TabIndex = 48;
+            this.HideBaseType.Text = "";
+            // 
+            // AstrictPanel
+            // 
+            this.AstrictPanel.Location = new System.Drawing.Point(895, 113);
+            this.AstrictPanel.Name = "AstrictPanel";
+            this.AstrictPanel.Size = new System.Drawing.Size(134, 46);
+            this.AstrictPanel.TabIndex = 49;
+            this.AstrictPanel.Text = "5:限制生成";
+            this.AstrictPanel.UseVisualStyleBackColor = true;
+            this.AstrictPanel.Click += new System.EventHandler(this.AstrictPanel_Click);
+            // 
+            // AstrictFlowPanel
+            // 
+            this.AstrictFlowPanel.Location = new System.Drawing.Point(9, 11);
+            this.AstrictFlowPanel.Name = "AstrictFlowPanel";
+            this.AstrictFlowPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.AstrictFlowPanel.Size = new System.Drawing.Size(867, 820);
+            this.AstrictFlowPanel.TabIndex = 47;
+            // 
+            // PreFallRowNum
+            // 
+            this.PreFallRowNum.Location = new System.Drawing.Point(1195, 731);
+            this.PreFallRowNum.Name = "PreFallRowNum";
+            this.PreFallRowNum.Size = new System.Drawing.Size(134, 31);
+            this.PreFallRowNum.TabIndex = 50;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.SystemColors.Info;
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label12.Location = new System.Drawing.Point(1191, 700);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(136, 21);
+            this.label12.TabIndex = 51;
+            this.label12.Text = "计划下落行数";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CreateGrid
             // 
@@ -410,7 +508,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1334, 841);
+            this.ClientSize = new System.Drawing.Size(1352, 841);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.PreFallRowNum);
+            this.Controls.Add(this.AstrictFlowPanel);
+            this.Controls.Add(this.AstrictPanel);
+            this.Controls.Add(this.HideBaseType);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.DurancePanel);
+            this.Controls.Add(this.FallingPlan);
+            this.Controls.Add(this.DuranceCreate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.PassNum2);
             this.Controls.Add(this.PassNum1);
@@ -487,6 +594,15 @@
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 打开文件所在位置ToolStripMenuItem;
+        private System.Windows.Forms.Button DuranceCreate;
+        private System.Windows.Forms.Button FallingPlan;
+        private System.Windows.Forms.FlowLayoutPanel DurancePanel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox HideBaseType;
+        private System.Windows.Forms.Button AstrictPanel;
+        private System.Windows.Forms.FlowLayoutPanel AstrictFlowPanel;
+        private System.Windows.Forms.TextBox PreFallRowNum;
+        private System.Windows.Forms.Label label12;
     }
 }
 

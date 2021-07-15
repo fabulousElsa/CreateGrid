@@ -14,6 +14,7 @@ namespace CreateGrid
         public string GoalTypeOneNum { get; set; }
         public string GoalTypeTwo { get; set; }
         public string GoalTypeTwoNum { get; set; }
+        public string BanElemType { get; set; }
 
     }
 }

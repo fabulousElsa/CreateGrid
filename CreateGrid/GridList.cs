@@ -8,8 +8,10 @@ namespace CreateGrid
 {
     public class GridList
     {
-        public List<GridDetail> gridDetails { get; set; }
+        public List<GridDetail> GridDetails { get; set; }
 
         public List<MissionDetail> MissionDetails { get; set; }
+
+        public List<DuranceDetail> DuranceDetails { get; set; }
     }
 }
